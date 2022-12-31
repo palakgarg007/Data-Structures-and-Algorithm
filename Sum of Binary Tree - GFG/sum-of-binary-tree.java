@@ -78,9 +78,21 @@ class GfG{
 class BinaryTree
 {
     static int sumBT(Node head){
-        if(head == null)
+        if(head==null)
             return 0;
-        else
-            return sumBT(head.left) + head.data + sumBT(head.right);
+        
+        Queue<Node> q = new LinkedList<>();
+        q.add(head);
+        int sum=0;
+        
+        while(!q.isEmpty()){
+            Node temp = q.remove();
+            sum += temp.data;
+            if(temp.left != null)
+                q.add(temp.left);
+            if(temp.right != null)
+                q.add(temp.right);
+        }
+        return sum;
     }
 }
