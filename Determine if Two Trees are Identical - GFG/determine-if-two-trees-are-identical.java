@@ -130,38 +130,36 @@ class Node{
 
 class Solution
 {
-    //Function to check if two trees are identical.
-	boolean isIdentical(Node root1, Node root2)
-	{
-	    Queue<Node> q1 = new LinkedList<>();
-	    Queue<Node> q2 = new LinkedList<>();
-	    
-	    q1.add(root1);
-	    q2.add(root2);
-	    
-	    while(!q1.isEmpty() && !q2.isEmpty()){
-	        Node temp1 = q1.remove();
-	        Node temp2 = q2.remove();
-	        
-	        if(temp1.data!=temp2.data)
-	            return false;
-	           
-	        if(temp1.left != null)
-	            q1.add(temp1.left);
-	       
-	        if(temp1.right != null)
-	            q1.add(temp1.right);
-	           
-	        if(temp2.left != null)
-	            q2.add(temp2.left);
-	            
-	        if(temp2.right != null)
-	            q2.add(temp2.right);
-	    }
-	    
-	    if(q1.isEmpty() && q2.isEmpty())
-	        return true;
-	    else
-	        return false;
-	}
+    public void preOrder(Node root, ArrayList<Integer> list){
+        if(root==null){
+            return;
+        }
+        list.add(root.data);
+        preOrder(root.left, list);
+        preOrder(root.right, list);
+    }
+    
+    boolean isIdentical(Node root1, Node root2)
+    {
+        if(root1==null||root2==null)
+            return false;
+            
+        ArrayList<Integer> list1 = new ArrayList<>();
+        ArrayList<Integer> list2 = new ArrayList<>();
+        preOrder(root1, list1);
+        preOrder(root2, list2);
+        
+        if(list1.size() != list2.size())
+            return false;
+        
+        for(int i=0; i<list1.size(); i++){
+            int n1 = list1.get(i);
+            int n2 = list2.get(i);
+            
+            if(n1 != n2)
+                return false;
+        }
+
+        return true;
+    }
 }
