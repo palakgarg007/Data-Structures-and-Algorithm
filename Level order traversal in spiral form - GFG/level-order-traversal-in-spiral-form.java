@@ -145,13 +145,11 @@ class Spiral
         Stack<Node> s2 = new Stack<>();
         int h=0;
         Node temp;
-        s1.add(null);
         s1.add(root);
         
         while(!s1.isEmpty() || !s2.isEmpty()){
             if(s1.isEmpty())
                 s1.add(null);
-            
             if(s2.isEmpty())
                 s2.add(null);
                 
