@@ -5,9 +5,8 @@ class Solution {
         ArrayList<Integer> a2 = new ArrayList<>();
         HashMap<Integer,Integer> map = new HashMap<>();
 
-        for(int i=0; i<nums1.length; i++){
+        for(int i=0; i<nums1.length; i++)
             map.put(nums1[i],0);
-        }
 
         for(int i:nums2){
             if(map.containsKey(i)){
